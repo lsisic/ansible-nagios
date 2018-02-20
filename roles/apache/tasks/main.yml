@@ -1,0 +1,12 @@
+---
+- name: install apache
+  yum: pkg={{ item }} state=present
+  with_items:
+   - php
+   - httpd
+   - libsemanage-python
+   - libselinux-python
+  when: is_centos
+
+- name: http service state
+  service: name={{ apache }} state=started enabled=yes

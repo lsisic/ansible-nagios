@@ -1,0 +1,9 @@
+---
+- hosts: all
+  vars:
+    is_centos: "'{{ ansible_distribution|lower }}' == 'centos'"
+  vars_files:
+    - "vars/{{ ansible_distribution|lower }}.yml"
+  roles:
+  - apache
+  - nagios-src
